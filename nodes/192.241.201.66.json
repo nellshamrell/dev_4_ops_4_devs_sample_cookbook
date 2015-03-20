@@ -1,0 +1,9 @@
+{
+  "run_list": [
+    "recipe[my_web_server_cookbook::default]",
+    "recipe[my_web_server_cookbook::ruby]",
+    "recipe[my_web_server_cookbook::swap_memory]",
+    "recipe[my_web_server_cookbook::passenger]",
+    "recipe[my_web_server_cookbook::postgresql]"
+  ]
+}
