@@ -18,21 +18,6 @@ gem_package 'passenger' do
   action :install
 end
 
-execute "sudo dd if=/dev/zero of=/swap bs=1M count=1024" do
-  action :run
-  not_if { ::File.exists?("/swap")}
-end
-
-execute "sudo mkswap /swap" do
-  action :run
-  not_if { ::File.exists?("/swap")}
-end
-
-execute "sudo swapon /swap" do
-  action :run
-  not_if { ::File.exists?("/swap")}
-end
-
 execute 'passenger-install-apache2-module' do
   command "sudo passenger-install-apache2-module --auto"
   action :run
