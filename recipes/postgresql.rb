@@ -13,3 +13,7 @@ execute "create new postgres user" do
   not_if { `sudo -u postgres psql -tAc \"SELECT 1 FROM pg_roles WHERE rolname=\'deploy\'\" | wc -l`.chomp == "1" }
 end
 
+execute "create new postgres user" do
+  user "postgres"
+  command "psql -c \"ALTER USER deploy CREATEDB;\""
+end
