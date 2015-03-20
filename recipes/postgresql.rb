@@ -9,7 +9,7 @@ package 'postgresql'
 
 execute "create new postgres user" do
   user "postgres"
-  command "psql -c \"create user deploy with password '#{insert password here}';\""
+  command "psql -c \"create user deploy with password 'some_random_password';\""
   not_if { `sudo -u postgres psql -tAc \"SELECT 1 FROM pg_roles WHERE rolname=\'deploy\'\" | wc -l`.chomp == "1" }
 end
 
