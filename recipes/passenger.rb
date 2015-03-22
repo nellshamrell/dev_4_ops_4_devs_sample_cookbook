@@ -5,6 +5,7 @@
 # Copyright (c) 2015 The Authors, All Rights Reserved.
 
 include_recipe 'my_web_server_cookbook::ruby'
+include_recipe 'my_web_server_cookbook::swap_memory'
 
 package 'apache2-threaded-dev'
 
@@ -14,8 +15,13 @@ package 'libapr1-dev'
 
 package 'libaprutil1-dev'
 
-gem_package 'passenger' do
-  action :install
+#gem_package 'passenger' do
+#  action :install
+#end
+
+execute 'sudo gem install passenger' do
+  command "sudo gem install passenger"
+  action :run
 end
 
 execute 'passenger-install-apache2-module' do

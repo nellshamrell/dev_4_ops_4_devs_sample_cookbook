@@ -11,11 +11,9 @@ end
 
 execute "sudo mkswap /swap" do
   action :run
-  not_if { ::File.exists?("/swap")}
 end
 
 execute "sudo swapon /swap" do
   action :run
-  not_if { ::File.exists?("/swap")}
 end
 
